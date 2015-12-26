@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Show IP</title>
+    <link rel="stylesheet" href="./stylesheets/ip.css">
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>IP</td>
+                <td>Headers</td>
+                <td>remoteAddress</td>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
+</body>
+<script src="javascripts/jquery.min.js"></script>
+<script type="text/javascript">
+    var tbody = $('#tbody');
+    function getData () {
+        console.log('get');
+        $.ajax({
+            url:'/ipData',
+            contentType: "application/json; charset=UTF-8"
+        }).done(function (data) {
+            var rows = JSON.parse(data).rows;
+            $.each(rows, function (index, value) {
+                var tr = $('<tr>');
+                $.each(value, function (index, value) {
+                    var td = $('<td>').html(value);
+                    td.appendTo(tr);
+                })
+                tr.appendTo(tbody);
+            });
+        });
+    }
+    $(getData);
+</script>
+</html>
