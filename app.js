@@ -27,9 +27,9 @@ app.get('/', function(req, res, next) {
             var db = new sqlite3.Database(__dirname + '/public/' + 'mydb.db');
             db.serialize(function() {
 
-                db.run("CREATE TABLE if not exists request_info (id integer PRIMARY KEY autoincrement, ip TEXT, headers TEXT, remoteAddress TEXT)");
-                var stmt = db.prepare("INSERT INTO request_info (ip,headers,remoteAddress) VALUES (?,?,?)");
-                stmt.run(util.inspect(getClientAddress(req)), util.inspect(req.headers), util.inspect(req.connection.remoteAddress));
+                db.run("CREATE TABLE if not exists request_info (id integer PRIMARY KEY autoincrement, ip TEXT, remoteAddress TEXT, headers TEXT)");
+                var stmt = db.prepare("INSERT INTO request_info (ip, remoteAddress, headers) VALUES (?,?,?)");
+                stmt.run(util.inspect(getClientAddress(req)), util.inspect(req.connection.remoteAddress), util.inspect(req.headers));
                 stmt.finalize();
                 console.log('insert');
             });
@@ -49,22 +49,18 @@ app.get('/db', function(req, res, next) {
     fReadStream.pipe(res);
 });
 
-app.get('/ip', function(req, res, next) {
-    var ipPac = [];
-    var index = 0;
+app.get('/ipData', function(req, res, next) {
+    var ipPac = {'rows': []};
     var sqlite3 = require('sqlite3').verbose();
     var db = new sqlite3.Database(__dirname + '/public/' + 'mydb.db');
+    // res.setHeader('Content-Type', 'application/json');
     db.serialize(function() {
         db.each("SELECT * FROM request_info", function(err, row) {
-            // console.log(row);
-            ipPac[index] = {};
-            ipPac[index]['ip'] = row.ip;
-            ipPac[index]['headers'] = row.headers;
-            ipPac[index]['remoteAddress'] = row.remoteAddress;
-            index++;
-            res.write(util.inspect(ipPac));
-        },function (){
-          res.end();
+            ipPac.rows.push(row);           
+        }, function (){
+                console.log(ipPac);
+            res.write(JSON.stringify(ipPac));
+            res.end();
         });
     });
     db.close();
