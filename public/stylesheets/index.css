@@ -1,0 +1,82 @@
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+ul{
+	list-style:none;
+}
+
+html{
+	height:100%;
+}
+body{
+	background:#000;
+}
+.title{
+	width:500px;
+	margin: 198px auto 50px;
+	text-align:center;
+	font-size: 48px;
+	font-weight:bolder;
+	color:#fff;
+	letter-spacing: 5px;
+}
+.hank-name{
+	color:#e10;
+	letter-spacing: 0;
+}
+.bao-name{
+	color:#0cf;
+}
+.nav{
+	width:900px;
+	margin:0 auto;
+}
+.nav li{
+	float:left;
+	padding:10px;
+	cursor:pointer;
+	font-size:36px;
+	color:#fff;
+	border-bottom: solid 4px #000;
+}
+.nav li:hover{
+	position: relative;
+	border-bottom: solid 4px #0c3;
+}
+.pointer-rectangle{
+	position: absolute;
+	bottom: 0;
+	left: 88px;
+	width: 0;
+	height: 0;
+	border-bottom: 10px solid #0c3;
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+}
+.links{
+	width: 200px;
+	margin: 80px auto 0;
+}
+.links li{
+	float:left;
+	padding:10px;
+	cursor:pointer;
+}
+.clear-pointer-rectangle{
+	position: absolute;
+	bottom: 0;
+	width: 30%;
+	height: 10px;
+	background: #000;
+}
+
+
+
+
+
+
