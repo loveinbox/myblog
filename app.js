@@ -56,7 +56,7 @@ app.get('/ipData', function(req, res, next) {
     // res.setHeader('Content-Type', 'application/json');
     db.serialize(function() {
         db.each("SELECT * FROM request_info", function(err, row) {
-            ipPac.rows.push(row);           
+            ipPac.rows.unshift(row);           
         }, function (){
                 console.log(ipPac);
             res.write(JSON.stringify(ipPac));
