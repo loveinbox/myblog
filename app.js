@@ -21,6 +21,11 @@ app.get('/', function(req, res, next) {
     res.sendFile(fileName, options, function(err) {
         if (err) {
             console.log(err);
+             if (err.code === "ECONNABORT" && res.statusCode == 304) {
+                // No problem, 304 means client cache hit, so no data sent.
+                console.log('304 cache hit for ' + filename);
+                return;
+            }
             res.status(err.status).end();
         } else {
             var sqlite3 = require('sqlite3').verbose();
