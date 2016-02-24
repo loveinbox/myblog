@@ -30,14 +30,18 @@ app.get('/', function(req, res, next) {
         } else {
             var sqlite3 = require('sqlite3').verbose();
             var db = new sqlite3.Database(__dirname + '/public/' + 'mydb.db');
-            db.serialize(function() {
-
-                db.run("CREATE TABLE if not exists request_time (time TEXT PRIMARY KEY, ip TEXT, remoteAddress TEXT, headers TEXT)");
-                var stmt = db.prepare("INSERT INTO request_time VALUES (?,?,?,?)");
-                stmt.run(util.inspect(Date()), util.inspect(getClientAddress(req)), util.inspect(req.connection.remoteAddress), util.inspect(req.headers));
-                stmt.finalize();
-                console.log('insert');
-            });
+            try {
+                db.serialize(function() {
+                    db.run("CREATE TABLE if not exists request_time_atuoID (integer PRIMARY KEY autoincrement, time TEXT , ip TEXT, remoteAddress TEXT, headers TEXT)");
+                    var stmt = db.prepare("INSERT INTO request_time_atuoID (time, ip, remoteAddress, headers)VALUES (?,?,?,?)");
+                    stmt.run(util.inspect(Date()), util.inspect(getClientAddress(req)), util.inspect(req.connection.remoteAddress), util.inspect(req.headers));
+                    stmt.finalize();
+                    console.log('insert');
+                });
+            }
+            catch (err){
+                console.log('db err, the err is  ' + err);
+            }
             db.close();
         }
     });
