@@ -20,8 +20,8 @@ app.get('/', function(req, res, next) {
     var fileName = 'index.html';
     res.sendFile(fileName, options, function(err) {
         if (err) {
-            console.log(err);
-             if (err.code === "ECONNABORT" && res.statusCode == 304) {
+            console.log("sendIle err! it is ",err);
+             if (err.code === "ECONNABORTED" && res.statusCode == 304) {
                 // No problem, 304 means client cache hit, so no data sent.
                 console.log('304 cache hit for ' + filename);
                 return;
