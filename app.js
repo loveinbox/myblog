@@ -32,7 +32,7 @@ app.get('/', function(req, res, next) {
             var db = new sqlite3.Database(__dirname + '/public/' + 'mydb.db');
             try {
                 db.serialize(function() {
-                    db.run("CREATE TABLE if not exists request_time_atuoID (integer PRIMARY KEY autoincrement, time TEXT , ip TEXT, remoteAddress TEXT, headers TEXT)");
+                    db.run("CREATE TABLE if not exists request_time_atuoID (id integer PRIMARY KEY autoincrement, time TEXT , ip TEXT, remoteAddress TEXT, headers TEXT)");
                     var stmt = db.prepare("INSERT INTO request_time_atuoID (time, ip, remoteAddress, headers)VALUES (?,?,?,?)");
                     stmt.run(util.inspect(Date()), util.inspect(getClientAddress(req)), util.inspect(req.connection.remoteAddress), util.inspect(req.headers));
                     stmt.finalize();
@@ -68,7 +68,7 @@ app.get('/ipData', function(req, res, next) {
     var db = new sqlite3.Database(__dirname + '/public/' + 'mydb.db');
     // res.setHeader('Content-Type', 'application/json');
     db.serialize(function() {
-        db.each("SELECT * FROM request_time", function(err, row) {
+        db.each("SELECT * FROM request_time_atuoID", function(err, row) {
             ipPac.rows.unshift(row);
         }, function() {
             // console.log(ipPac);
