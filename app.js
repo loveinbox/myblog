@@ -66,9 +66,13 @@ app.get('/ipData', function(req, res, next) {
     };
     var sqlite3 = require('sqlite3').verbose();
     var db = new sqlite3.Database(__dirname + '/public/' + 'mydb.db');
+    var query = require('url').parse(req.url,true).query;
     // res.setHeader('Content-Type', 'application/json');
     db.serialize(function() {
-        db.each("SELECT * FROM request_time_atuoID", function(err, row) {
+        console.log("query.limit ", query.limit);
+        console.log("query.page ", query.page);
+        db.each("SELECT * FROM request_time_atuoID limit "+ query.limit + " offset " + query.page, function(err, row) {
+            console.log("row ", row);
             ipPac.rows.unshift(row);
         }, function() {
             // console.log(ipPac);
@@ -81,7 +85,9 @@ app.get('/ipData', function(req, res, next) {
 
 app.use(express.static('public'));
 
-var server = app.listen(80, function() {
+var port = process.argv[2]?process.argv[2]:8080;
+
+var server = app.listen(port, function() {
     var host = server.address().address;
     var port = server.address().port;
     console.log('Example app listening at http://%s:%s', host, port);

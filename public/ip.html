@@ -8,6 +8,14 @@
 </head>
 
 <body>
+    <input class="js-page" type="text">
+    <button class="js-go" >GO</button>
+    <select class="js-limit">
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>50</option>
+    </select>
     <table>
         <thead>
             <tr>
@@ -24,12 +32,18 @@
 <script src="javascripts/jquery.min.js"></script>
 <script type="text/javascript">
     var tbody = $('#tbody');
-    function getData () {
+    var pageInput = $('.js-page');
+    var limitInput = $('.js-limit');
+    function getData (page, limit) {
+        if(page === ''){
+            page = 0;
+        }
         console.log('get');
         $.ajax({
-            url:'/ipData',
+            url:'/ipData?page=' + page + '&limit='+ limit,
             contentType: "application/json; charset=UTF-8"
         }).done(function (data) {
+            tbody.empty();
             var rows = JSON.parse(data).rows;
             $.each(rows, function (index, value) {
                 var tr = $('<tr>');
@@ -41,6 +55,13 @@
             });
         });
     }
-    $(getData);
+    $(getData(0,10));
+
+    $('.js-go').click(function(event) {
+        getData(pageInput.val(), limitInput.val());
+    });
+    $('.js-limit').change(function(event) {
+        getData(pageInput.val(), limitInput.val())
+    });
 </script>
 </html>
