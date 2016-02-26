@@ -71,7 +71,7 @@ app.get('/ipData', function(req, res, next) {
     db.serialize(function() {
         console.log("query.limit ", query.limit);
         console.log("query.page ", query.page);
-        db.each("SELECT * FROM request_time_atuoID limit "+ query.limit + " offset " + query.page, function(err, row) {
+        db.each("SELECT * FROM request_time_atuoID order by id desc limit "+ query.limit + " offset " + query.page, function(err, row) {
             console.log("row ", row);
             ipPac.rows.unshift(row);
         }, function() {
