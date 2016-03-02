@@ -25,7 +25,7 @@ app.get('/', function(req, res, next) {
             console.log("res.statusCode ", res.statusCode);
             if (err.code === "ECONNABORTED" && (res.statusCode === 304 || res.statusCode == 200)) {
                 // No problem, 304 means client cache hit, so no data sent.
-                console.log('304 cache hit for ' + filename);
+                console.log('304 cache hit for ' + fileName);
                 return;
             }
             res.status(err.status).end();
