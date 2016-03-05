@@ -28,7 +28,7 @@ app.get('/', function(req, res, next) {
                 console.log('304 cache hit for ' + fileName);
                 return;
             }
-            res.status(err.status).end();
+            // res.status(err.status).end();
         } else {
             var sqlite3 = require('sqlite3').verbose();
             var db = new sqlite3.Database(__dirname + '/public/' + 'mydb.db');
@@ -71,10 +71,10 @@ app.get('/ipData', function(req, res, next) {
     var query = require('url').parse(req.url,true).query;
     // res.setHeader('Content-Type', 'application/json');
     db.serialize(function() {
-        console.log("query.limit ", query.limit);
-        console.log("query.page ", query.page);
+        // console.log("query.limit ", query.limit);
+        // console.log("query.page ", query.page);
         db.each("SELECT * FROM request_time_atuoID order by id desc limit "+ query.limit + " offset " + query.page, function(err, row) {
-            console.log("row ", row);
+            // console.log("row ", row);
             ipPac.rows.unshift(row);
         }, function() {
             // console.log(ipPac);
