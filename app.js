@@ -38,7 +38,7 @@ app.get('/', function(req, res, next) {
                     var stmt = db.prepare("INSERT INTO request_time_atuoID (time, ip, remoteAddress, headers)VALUES (?,?,?,?)");
                     stmt.run(util.inspect(Date()), util.inspect(getClientAddress(req)), util.inspect(req.connection.remoteAddress), util.inspect(req.headers));
                     stmt.finalize();
-                    console.log('insert');
+                    console.log('insert' + util.inspect(Date());
                 });
             }
             catch (err){
