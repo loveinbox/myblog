@@ -77,12 +77,12 @@ app.get('/ipData', function(req, res, next) {
             db.each("SELECT * FROM request_time_atuoID order by id desc limit "+ query.limit + " offset " + query.page, function(err, row) {
                 // console.log("row ", row);
                 ipPac.rows.unshift(row);
-                console.log('select \t' + util.inspect(Date()));
             }, function() {
                 // console.log(ipPac);
                 res.write(JSON.stringify(ipPac));
                 res.end();
             });
+            console.log('select \t' + util.inspect(Date()));
         });
     }
     catch (err){
