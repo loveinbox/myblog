@@ -42,7 +42,7 @@ app.get('/', function(req, res, next) {
                 });
             }
             catch (err){
-                console.log('db err, the err is  ' + err);
+                console.log('db insert err, the err is  ' + err);
             }
             db.close();
         }
@@ -70,18 +70,23 @@ app.get('/ipData', function(req, res, next) {
     var db = new sqlite3.Database(__dirname + '/public/' + 'mydb.db');
     var query = require('url').parse(req.url,true).query;
     // res.setHeader('Content-Type', 'application/json');
-    db.serialize(function() {
-        // console.log("query.limit ", query.limit);
-        // console.log("query.page ", query.page);
-        db.each("SELECT * FROM request_time_atuoID order by id desc limit "+ query.limit + " offset " + query.page, function(err, row) {
-            // console.log("row ", row);
-            ipPac.rows.unshift(row);
-        }, function() {
-            // console.log(ipPac);
-            res.write(JSON.stringify(ipPac));
-            res.end();
+    try {
+        db.serialize(function() {
+            // console.log("query.limit ", query.limit);
+            // console.log("query.page ", query.page);
+            db.each("SELECT * FROM request_time_atuoID order by id desc limit "+ query.limit + " offset " + query.page, function(err, row) {
+                // console.log("row ", row);
+                ipPac.rows.unshift(row);
+            }, function() {
+                // console.log(ipPac);
+                res.write(JSON.stringify(ipPac));
+                res.end();
+            });
         });
-    });
+    }
+    catch (err){
+        console.log('db select err, the err is  ' + err);
+    }
     db.close();
 });
 
