@@ -38,7 +38,7 @@ app.get('/', function(req, res, next) {
                     var stmt = db.prepare("INSERT INTO request_time_atuoID (time, ip, remoteAddress, headers)VALUES (?,?,?,?)");
                     stmt.run(util.inspect(Date()), util.inspect(getClientAddress(req)), util.inspect(req.connection.remoteAddress), util.inspect(req.headers));
                     stmt.finalize();
-                    console.log('insert' + util.inspect(Date()));
+                    console.log('insert \t' + util.inspect(Date()));
                 });
             }
             catch (err){
@@ -77,6 +77,7 @@ app.get('/ipData', function(req, res, next) {
             db.each("SELECT * FROM request_time_atuoID order by id desc limit "+ query.limit + " offset " + query.page, function(err, row) {
                 // console.log("row ", row);
                 ipPac.rows.unshift(row);
+                console.log('select \t' + util.inspect(Date()));
             }, function() {
                 // console.log(ipPac);
                 res.write(JSON.stringify(ipPac));
