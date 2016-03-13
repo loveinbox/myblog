@@ -114,7 +114,7 @@ body:after{
 }
 @keyframes rotating {
     from {transform:rotate(0);}
-    to {transform:rotate(360deg)}
+    to {transform:rotate(360deg);}
 }
 .stats{
 	background:#F7A6B5;
@@ -129,11 +129,18 @@ body:after{
 	background:#ADD3E1;
 }
 .me .font-wrapper{
-	color: #FF3F3F;
+	animation:color-changing;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
 }
 .me .font-wrapper:hover{
 	transform: rotate(45deg);
     transform-origin: 50% 70%;
+}
+@keyframes color-changing {
+    from {color: #FF3F3F;}
+    to {color: #FFF83F;}
 }
 .font-wrapper{
     margin-top: 20px;
