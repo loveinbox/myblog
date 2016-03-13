@@ -6,6 +6,16 @@ var http = require("http");
 var fs = require("fs");
 var dbname = __dirname + '/public/' + 'mydb.db';
 
+app.use(express.static('public'));
+
+var port = process.argv[2]?process.argv[2]:8080;
+
+var server = app.listen(port, function() {
+    var host = server.address().address;
+    var port = server.address().port;
+    console.log('Example app listening at http://%s:%s', host, port);
+});
+
 app.get('/', function(req, res, next) {
 
     var options = {
@@ -89,14 +99,4 @@ app.get('/ipData', function(req, res, next) {
         console.log('db select err, the err is  ' + err);
     }
     db.close();
-});
-
-app.use(express.static('public'));
-
-var port = process.argv[2]?process.argv[2]:8080;
-
-var server = app.listen(port, function() {
-    var host = server.address().address;
-    var port = server.address().port;
-    console.log('Example app listening at http://%s:%s', host, port);
 });
