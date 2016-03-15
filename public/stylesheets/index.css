@@ -36,7 +36,7 @@ body:after{
     left: 0;
     background: url(../img/castle.jpeg) no-repeat center;
     background-size:40%;
-    opacity: 0.5;
+    opacity: 0.8;
     z-index:-1;
 }
 
