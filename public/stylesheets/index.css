@@ -8,8 +8,9 @@ body{
 ul{
 	list-style:none;
 }
-a,a:link,a:active,a:visited{
+a:link,a:active,a:visited{
 	text-decoration:none;
+    color:#fff;
 }
 .clearfix:after {
 	visibility: hidden;
@@ -148,20 +149,19 @@ body:after{
     height: 110px;
 }
 .links{
-	width: 200px;
-	margin: 80px auto 0;
+	width: 410px;
+    margin: 80px auto 0;
+    font-size: 45px;
 }
 .links li{
 	float:left;
 	padding:10px;
 	cursor:pointer;
+    color: #fff;
+    margin-right: 50px;
 }
-.clear-pointer-rectangle{
-	position: absolute;
-	bottom: 0;
-	width: 30%;
-	height: 10px;
-	background: #000;
+.links i:hover{
+    color:#0cf;
 }
 
 
