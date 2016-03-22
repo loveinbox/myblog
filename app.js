@@ -17,7 +17,7 @@ var server = app.listen(port, function() {
 });
 
 app.get('/', function(req, res, next) {
-
+    console.log('sendFile');
     var options = {
         root: __dirname + '/public/',
         dotfiles: 'deny',
@@ -27,7 +27,7 @@ app.get('/', function(req, res, next) {
         }
     };
 
-    var fileName = 'index.html';
+    var fileName = 'main.html';
     res.sendFile(fileName, options, function(err) {
         if (err) {
             console.log("sendIle err! it is ",err);
@@ -40,6 +40,7 @@ app.get('/', function(req, res, next) {
             }
             // res.status(err.status).end();
         } else {
+            console.log('start insert');
             var sqlite3 = require('sqlite3').verbose();
             var db = new sqlite3.Database(__dirname + '/public/' + 'mydb.db');
             try {
