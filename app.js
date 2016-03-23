@@ -42,12 +42,13 @@ app.get('/', function(req, res, next) {
         } else {
             console.log('start insert');
             var sqlite3 = require('sqlite3').verbose();
-            var db = new sqlite3.Database(__dirname + '/public/' + 'mydb.db');
+            var db = new sqlite3.Database(__dirname + '/public/' + 'mydb.db');            
+            var now = getTime();
             try {
                 db.serialize(function() {
                     db.run("CREATE TABLE if not exists request_time_atuoID (id integer PRIMARY KEY autoincrement, time TEXT , ip TEXT, remoteAddress TEXT, headers TEXT)");
                     var stmt = db.prepare("INSERT INTO request_time_atuoID (time, ip, remoteAddress, headers)VALUES (?,?,?,?)");
-                    stmt.run(util.inspect(Date()), util.inspect(getClientAddress(req)), util.inspect(req.connection.remoteAddress), util.inspect(req.headers));
+                    stmt.run(util.inspect(now), util.inspect(getClientAddress(req)), util.inspect(req.connection.remoteAddress), util.inspect(req.headers));
                     stmt.finalize();
                     console.log('insert \t' + util.inspect(Date()));
                 });
@@ -101,3 +102,13 @@ app.get('/ipData', function(req, res, next) {
     }
     db.close();
 });
+
+function getTime() {
+    var d = new Date();
+    return formatZero(d.getHours()) + ':' + formatZero(d.getMinutes()) + ':' + formatZero(d.getSeconds()) + ' '
+             + formatZero(d.getFullYear()) + '/' + formatZero(d.getMonth() + 1) + '/' + formatZero(d.getDate());
+
+    function formatZero(number){
+        return number < 10 ? '0' + number : number;
+    }
+}

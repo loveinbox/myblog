@@ -20,9 +20,8 @@
         <thead>
             <tr>
                 <td>ID</td>
-                <td>TIME</td>
-                <td>IP</td>
-                <td>remoteAddress</td>
+                <td style="width: 100px;">TIME</td>
+                <td>IP or remoteAddress</td>
                 <td>Headers</td>
             </tr>
         </thead>
@@ -47,10 +46,10 @@
             var rows = JSON.parse(data).rows;
             $.each(rows, function (index, value) {
                 var tr = $('<tr>');
-                $.each(value, function (index, value) {
-                    var td = $('<td>').html(value);
-                    td.appendTo(tr);
-                })
+                $('<td>').html(value['id']).appendTo(tr);
+                $('<td>').html(value['time']).slice(-13).appendTo(tr);
+                $('<td>').html('IP: ' + value['ip'] + '<br>' + 'RA: ' + value['remoteAddress']).appendTo(tr);
+                $('<td>').html(value['headers']).appendTo(tr);
                 tr.prependTo(tbody);
             });
         });
