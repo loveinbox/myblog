@@ -5,6 +5,6 @@ table{
 td{
     border: solid;
 }
-tbody td:last-child{
+tbody td:nth-child(3){
     text-align: left;
 }
