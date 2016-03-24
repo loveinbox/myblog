@@ -104,7 +104,19 @@ app.get('/ipData', function(req, res, next) {
 });
 
 app.get('/gitpull', function(req, res, next) {
-    console.log('gitpull test3');
+    console.log('gitpull \t' + util.inspect(Date()));
+    var exec = require('child_process').exec; 
+    var cmdStr = 'git pull ;pkill node; nohup node app 80 &;';
+    exec(cmdStr, function(err,stdout,stderr){
+        if(err) {
+            res.write('stderr: ' + util.inspect(stderr));
+            console.log('stderr: ' + util.inspect(stderr));
+        } else {
+            res.write('stdout :' + util.inspect(stdout));
+            console.log('git pull: ' + util.inspect(stdout));
+        }
+        res.end();
+    });
 });
 
 function getTime() {
