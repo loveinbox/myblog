@@ -106,7 +106,7 @@ app.get('/ipData', function(req, res, next) {
 app.get('/gitpull', function(req, res, next) {
     console.log('gitpull \t' + util.inspect(Date()));
     var exec = require('child_process').exec; 
-    var cmdStr = 'git pull ; pkill node ; nohup node app 80 &';
+    var cmdStr = 'git pull';
     exec(cmdStr, function(err,stdout,stderr){
         if(err) {
             res.write('stderr: ' + util.inspect(stderr));
