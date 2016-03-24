@@ -103,7 +103,7 @@ app.get('/ipData', function(req, res, next) {
     db.close();
 });
 
-app.all('/gitpull', function(req, res, next) {
+app.post('/gitpull', function(req, res, next) {
     console.log('gitpull \t' + util.inspect(Date()));
     var exec = require('child_process').exec; 
     var cmdStr = 'git pull';
