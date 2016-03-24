@@ -18,10 +18,13 @@ a:link,a:active,a:visited{
     clear: both;
     height: 0;
 }
+h1{
+    margin: 10px 0;
+}
 
 .main-header{
     border-bottom: solid 1px;
-    padding-bottom: 5px;
+    padding: 5px;
 }
 .main-header img{
     width: 22px;
