@@ -1,0 +1,26 @@
+html,body{
+    height:100%;
+}
+ul{
+    list-style:none;
+}
+a:link,a:active,a:visited{
+    text-decoration:none;
+    color:#000;
+}
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.main-header{
+    border-bottom:solid;
+}
+.main-header img{
+    width: 22px;
+    vertical-align:text-bottom;
+}

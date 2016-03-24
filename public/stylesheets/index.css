@@ -1,28 +1,6 @@
-html{
-	height:100%;
-}
-body{
-	height:100%;
-	background:  #151112;
-}
-ul{
-	list-style:none;
-}
-a:link,a:active,a:visited{
-	text-decoration:none;
-    color:#fff;
-}
-.clearfix:after {
-	visibility: hidden;
-	display: block;
-	font-size: 0;
-	content: " ";
-	clear: both;
-	height: 0;
-}
-
 body{
     position: relative;
+    background:  #151112;
 }
 body:after{
     content: '';
@@ -38,6 +16,9 @@ body:after{
     background-size:40%;
     opacity: 0.8;
     z-index:-1;
+}
+a:link,a:active,a:visited{
+    color:#fff;
 }
 
 .global-container{
