@@ -113,7 +113,7 @@ app.get('/gitpull', function(req, res, next) {
             console.log('stderr: ' + util.inspect(stderr));
         } else {
             res.write('stdout :' + util.inspect(stdout));
-            console.log('git pull: ', util.inspect(stdout) , 'time:' , util.inspect(now));
+            console.log('git pull: ', util.inspect(stdout) , 'time:' , util.inspect(getTime()));
         }
         res.end();
     });
