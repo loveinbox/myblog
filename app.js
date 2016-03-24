@@ -50,7 +50,7 @@ app.get('/', function(req, res, next) {
                     var stmt = db.prepare("INSERT INTO request_headers (time, ip, remoteAddress, host, headers)VALUES (?,?,?,?,?)");
                     stmt.run(util.inspect(now), util.inspect(getClientAddress(req)), util.inspect(req.connection.remoteAddress), util.inspect(req.headers.host), util.inspect(req.headers));
                     stmt.finalize();
-                    console.log('insert \t' + util.inspect(Date()));
+                    console.log('insert \t' + util.inspect(now));
                 });
             }
             catch (err){
@@ -113,7 +113,7 @@ app.get('/gitpull', function(req, res, next) {
             console.log('stderr: ' + util.inspect(stderr));
         } else {
             res.write('stdout :' + util.inspect(stdout));
-            console.log('git pull: ' + util.inspect(stdout));
+            console.log('git pull: ', util.inspect(stdout) , 'time:' , util.inspect(now));
         }
         res.end();
     });
