@@ -103,6 +103,10 @@ app.get('/ipData', function(req, res, next) {
     db.close();
 });
 
+app.get('/gitpull', function(req, res, next) {
+    console.log('gitpull');
+});
+
 function getTime() {
     var d = new Date();
     return formatZero(d.getHours()) + ':' + formatZero(d.getMinutes()) + ':' + formatZero(d.getSeconds()) + ' '
