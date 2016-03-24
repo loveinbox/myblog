@@ -18,7 +18,8 @@ a:link,a:active,a:visited{
 }
 
 .main-header{
-    border-bottom:solid;
+    border-bottom: solid 1px;
+    padding-bottom: 5px;
 }
 .main-header img{
     width: 22px;
