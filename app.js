@@ -104,7 +104,7 @@ app.get('/ipData', function(req, res, next) {
 });
 
 app.get('/gitpull', function(req, res, next) {
-    console.log('gitpull');
+    console.log('gitpull test');
 });
 
 function getTime() {
