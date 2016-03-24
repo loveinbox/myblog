@@ -8,7 +8,7 @@ var dbname = __dirname + '/public/' + 'mydb.db';
 
 app.use(express.static('public'));
 
-var port = process.argv[2]?process.argv[2]:8080;
+var port = process.argv[2]?process.argv[2]:8000;
 
 var server = app.listen(port, function() {
     var host = server.address().address;
@@ -106,7 +106,7 @@ app.get('/ipData', function(req, res, next) {
 app.get('/gitpull', function(req, res, next) {
     console.log('gitpull \t' + util.inspect(Date()));
     var exec = require('child_process').exec; 
-    var cmdStr = 'git pull ;pkill node; nohup node app 80 &;';
+    var cmdStr = 'git pull ; pkill node ; nohup node app 80 &';
     exec(cmdStr, function(err,stdout,stderr){
         if(err) {
             res.write('stderr: ' + util.inspect(stderr));
