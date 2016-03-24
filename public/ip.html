@@ -2,32 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Show IP</title>
+    <title>Request Info</title>
     <link rel="stylesheet" href="./stylesheets/ip.css">
-    <link rel="icon" href="fav2.png" />
+    <link rel="icon" href="img/fav2.png" />
 </head>
 
 <body>
-    <input class="js-page" type="text">
-    <button class="js-go" >GO</button>
-    <select class="js-limit">
-        <option>10</option>
-        <option>20</option>
-        <option>30</option>
-        <option>50</option>
-    </select>
-    <table>
-        <thead>
-            <tr>
-                <td>ID</td>
-                <td style="width: 100px;">TIME</td>
-                <td style="width: 200px;">IP or RemoteAddress</td>
-                <td>Host</td>
-                <td>Headers</td>
-            </tr>
-        </thead>
-        <tbody id="tbody"></tbody>
-    </table>
+    <section>
+        <h1>Request Header Infomation</h1>
+    </section>
+    <section class="table-limit">   
+        <input class="js-page" type="text" placeholder="input ID to go">
+        <button class="js-go" >GO</button>
+        <select class="js-limit">
+            <option>5</option>
+            <option>10</option>
+            <option>20</option>
+            <option>30</option>
+            <option>50</option>
+        </select>
+    </section>
+    <section>
+        <table>
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td style="width: 100px;">TIME</td>
+                    <td style="width: 200px;">IP/RemoteAddress</td>
+                    <td>Host</td>
+                    <td>Headers</td>
+                </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+        </table>
+    </section>    
 </body>
 <script src="javascripts/jquery.min.js"></script>
 <script type="text/javascript">
@@ -56,7 +64,7 @@
             });
         });
     }
-    $(getData(0,10));
+    $(getData(0,5));
 
     $('.js-go').click(function(event) {
         getData(pageInput.val(), limitInput.val());

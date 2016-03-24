@@ -2,19 +2,26 @@ table{
     border-collapse: collapse;
     text-align: center;
 }
-td{
-    border: solid;
-}
 thead td{
     background:#FFF4C6;
 }
-thead td:nth-child(1),thead td:nth-child(2),thead td:nth-child(3){
+thead td:nth-child(1),thead td:nth-child(2){
     padding: 0 5px;
+}
+thead td,tbody td:first-child{
+    border: #E2D49A solid;
 }
 tbody td:first-child{
     background:#FFF4C6;
 }
-tbody td:nth-child(4),tbody td:nth-child(5){
+tbody td:nth-child(3),tbody td:nth-child(4),tbody td:nth-child(5){
     text-align: left;
     padding: 10px;
+}
+tbody tr:nth-child(odd){
+    background:#eee;
+}
+
+.table-limit{
+    margin:20px 10px;
 }
