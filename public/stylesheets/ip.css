@@ -5,6 +5,16 @@ table{
 td{
     border: solid;
 }
-tbody td:nth-child(3),tbody td:last-child{
+thead td{
+    background:#FFF4C6;
+}
+thead td:nth-child(1),thead td:nth-child(2),thead td:nth-child(3){
+    padding: 0 5px;
+}
+tbody td:first-child{
+    background:#FFF4C6;
+}
+tbody td:nth-child(4),tbody td:nth-child(5){
     text-align: left;
+    padding: 10px;
 }

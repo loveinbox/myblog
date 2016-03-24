@@ -22,6 +22,7 @@
                 <td>ID</td>
                 <td style="width: 100px;">TIME</td>
                 <td style="width: 200px;">IP or RemoteAddress</td>
+                <td>Host</td>
                 <td>Headers</td>
             </tr>
         </thead>
@@ -49,6 +50,7 @@
                 $('<td>').html(value['id']).appendTo(tr);
                 $('<td>').html(value['time']).slice(-13).appendTo(tr);
                 $('<td>').html('IP: ' + value['ip'] + '<br>' + 'RA: ' + value['remoteAddress']).appendTo(tr);
+                $('<td>').html(value['host']).appendTo(tr);
                 $('<td>').html(value['headers']).appendTo(tr);
                 tr.prependTo(tbody);
             });

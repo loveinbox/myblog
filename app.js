@@ -46,9 +46,9 @@ app.get('/', function(req, res, next) {
             var now = getTime();
             try {
                 db.serialize(function() {
-                    db.run("CREATE TABLE if not exists request_time_atuoID (id integer PRIMARY KEY autoincrement, time TEXT , ip TEXT, remoteAddress TEXT, headers TEXT)");
-                    var stmt = db.prepare("INSERT INTO request_time_atuoID (time, ip, remoteAddress, headers)VALUES (?,?,?,?)");
-                    stmt.run(util.inspect(now), util.inspect(getClientAddress(req)), util.inspect(req.connection.remoteAddress), util.inspect(req.headers));
+                    db.run("CREATE TABLE if not exists request_headers (id integer PRIMARY KEY autoincrement, time TEXT , ip TEXT, remoteAddress TEXT,host TEXT , headers TEXT)");
+                    var stmt = db.prepare("INSERT INTO request_headers (time, ip, remoteAddress, host, headers)VALUES (?,?,?,?,?)");
+                    stmt.run(util.inspect(now), util.inspect(getClientAddress(req)), util.inspect(req.connection.remoteAddress), util.inspect(req.headers.host), util.inspect(req.headers));
                     stmt.finalize();
                     console.log('insert \t' + util.inspect(Date()));
                 });
@@ -86,7 +86,7 @@ app.get('/ipData', function(req, res, next) {
         db.serialize(function() {
             // console.log("query.limit ", query.limit);
             // console.log("query.page ", query.page);
-            db.each("SELECT * FROM request_time_atuoID order by id desc limit "+ query.limit + " offset " + query.page, function(err, row) {
+            db.each("SELECT * FROM request_headers order by id desc limit "+ query.limit + " offset " + query.page, function(err, row) {
                 // console.log("row ", row);
                 ipPac.rows.unshift(row);
             }, function() {
