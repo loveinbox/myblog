@@ -6,7 +6,7 @@ var http = require("http");
 var fs = require("fs");
 var dbname = __dirname + '/public/' + 'mydb.db';
 
-var version = -1;
+var version = getTime();
 
 app.use(express.static('public'));
 
@@ -106,7 +106,6 @@ app.get('/ipData', function(req, res, next) {
 });
 
 app.all('/gitpull', function(req, res, next) {
-    version = getTime();
     console.log('gitpull \t' + util.inspect(Date()));
     var exec = require('child_process').exec; 
     var cmdStr = 'git pull --no-edit';
