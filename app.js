@@ -9,6 +9,7 @@ var dbname = __dirname + '/public/' + 'mydb.db';
 var version = getTime();
 
 app.use(express.static('public'));
+app.use(express.bodyParser());
 
 var port = process.argv[2]?process.argv[2]:8000;
 
@@ -106,6 +107,9 @@ app.get('/ipData', function(req, res, next) {
 });
 
 app.all('/gitpull', function(req, res, next) {
+    if (!isValidate(req)){
+        return;
+    }
     console.log('gitpull \t' + util.inspect(Date()));
     var exec = require('child_process').exec; 
     var cmdStr = 'git pull --no-edit';
@@ -119,13 +123,19 @@ app.all('/gitpull', function(req, res, next) {
         }
         res.end();
     });
+    function isValidate (req) {
+        var pusherName = req.pusher.name,
+            pusherEmail = req.pusher.email;
+        console.log(pusherName + pusherEmail);
+        return true;
+    }
 });
 
 app.all('/version', function(req, res, next) {
     res.send('version:' + util.inspect(version));
 });
 
-function getTime() {
+function getTime () {
     var d = new Date();
     return formatZero(d.getHours()) + ':' + formatZero(d.getMinutes()) + ':' + formatZero(d.getSeconds()) + ' '
              + formatZero(d.getFullYear()) + '/' + formatZero(d.getMonth() + 1) + '/' + formatZero(d.getDate());
@@ -134,3 +144,8 @@ function getTime() {
         return number < 10 ? '0' + number : number;
     }
 }
+
+
+
+
+
