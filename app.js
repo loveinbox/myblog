@@ -112,7 +112,7 @@ app.get('/ipData', function(req, res, next) {
 
 app.all('/gitpull', function(req, res, next) {
     if (!isValidate(req)){
-        return;
+        res.send('bad post');
     }
     console.log('gitpull \t' + util.inspect(Date()));
     var exec = require('child_process').exec; 
@@ -128,6 +128,9 @@ app.all('/gitpull', function(req, res, next) {
         res.end();
     });
     function isValidate (req) {
+        if( req.body.pusher === undefined){
+            return false;
+        }
         var pusherName = req.body.pusher.name,
             pusherEmail = req.body.pusher.email;
         console.log(pusherName + pusherEmail);
