@@ -14,6 +14,7 @@
             <img src="img/fav.png">
             <span>Hankonline</span> 
         </a>
+        <span class="version"></span>
     </header>
     <section class="main-wrapper">
         <section>
@@ -80,5 +81,13 @@
     $('.js-limit').change(function(event) {
         getData(pageInput.val(), limitInput.val())
     });
+
+    (function getVersion () {
+        $.ajax({
+            url:'/version'
+        }).success(function (data) {
+            $('.version').html(data);
+        });
+    })();
 </script>
 </html>

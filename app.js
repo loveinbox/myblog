@@ -6,6 +6,8 @@ var http = require("http");
 var fs = require("fs");
 var dbname = __dirname + '/public/' + 'mydb.db';
 
+var version = -1;
+
 app.use(express.static('public'));
 
 var port = process.argv[2]?process.argv[2]:8000;
@@ -104,6 +106,7 @@ app.get('/ipData', function(req, res, next) {
 });
 
 app.all('/gitpull', function(req, res, next) {
+    version = Date.now();
     console.log('gitpull \t' + util.inspect(Date()));
     var exec = require('child_process').exec; 
     var cmdStr = 'git pull --no-edit';
@@ -117,6 +120,10 @@ app.all('/gitpull', function(req, res, next) {
         }
         res.end();
     });
+});
+
+app.all('/version', function(req, res, next) {
+    res.send(util.inspect(getTime()));
 });
 
 function getTime() {
