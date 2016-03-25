@@ -123,7 +123,7 @@ app.all('/gitpull', function(req, res, next) {
 });
 
 app.all('/version', function(req, res, next) {
-    res.send(util.inspect(getTime()));
+    res.send('version:' + util.inspect(getTime()));
 });
 
 function getTime() {
