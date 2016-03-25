@@ -47,7 +47,6 @@ a:link,a:active,a:visited{
 }
 .nav li{
 	float:left;
-	padding-top: 5px;
 	margin-right: 45px;
     width: 18%;
 	height: 180px;
@@ -58,11 +57,23 @@ a:link,a:active,a:visited{
 	font-family:"Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
 }
 .nav li a{
+    position:relative;
 	display:block;
+    padding-top: 5px;
 	height:100%;
 	width: 100%;
 	color:#AE7BB3;
 	font-weight:bold;
+    overflow: hidden;
+}
+.font-wrapper:hover{    
+    transition: all .5s ease;
+}
+.font-wrapper{
+    position: absolute;
+    top:0;
+    font-size: 52px;
+    padding: 78px 55px 38px;
 }
 .tech{
 	background: #BEEEA9;
@@ -70,11 +81,7 @@ a:link,a:active,a:visited{
 .tech .font-wrapper{
 	color: #3FA1FF;
 }
-.font-wrapper:hover{	
-	transition: all .5s ease;
-}
 .tech .font-wrapper:hover{
-	position:relative;
 	animation:back-forth;
 	animation-duration:1.5s;
 	animation-iteration-count: infinite;
@@ -123,11 +130,6 @@ a:link,a:active,a:visited{
 @keyframes color-changing {
     from {color: #FF3F3F;}
     to {color: #FFF83F;}
-}
-.font-wrapper{
-    margin-top: 20px;
-    font-size: 52px;
-    height: 110px;
 }
 .links{
 	width: 410px;
