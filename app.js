@@ -132,8 +132,8 @@ app.all('/gitpull', function(req, res, next) {
         if( req.body.pusher === undefined){
             return false;
         }
-        var pusherName = req.body.pusher.name,
-            pusherEmail = req.body.pusher.email;
+        var pusherName = req.body.pusher.name;
+        var pusherEmail = req.body.pusher.email;
         if (pusherName === 'hank1732' && pusherEmail === 'dhuhank@foxmail.com'){
             return true;
         }else{
