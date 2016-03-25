@@ -113,6 +113,7 @@ app.get('/ipData', function(req, res, next) {
 app.all('/gitpull', function(req, res, next) {
     if (!isValidate(req)){
         res.send('bad post');
+        return ;
     }
     console.log('gitpull \t' + util.inspect(Date()));
     var exec = require('child_process').exec; 
