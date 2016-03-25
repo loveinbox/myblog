@@ -5,11 +5,15 @@ var util = require('util');
 var http = require("http");
 var fs = require("fs");
 var dbname = __dirname + '/public/' + 'mydb.db';
+var bodyParser = require('body-parser');
 
 var version = getTime();
 
 app.use(express.static('public'));
-app.use(express.bodyParser());
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
 
 var port = process.argv[2]?process.argv[2]:8000;
 
@@ -124,10 +128,14 @@ app.all('/gitpull', function(req, res, next) {
         res.end();
     });
     function isValidate (req) {
-        var pusherName = req.pusher.name,
-            pusherEmail = req.pusher.email;
+        var pusherName = req.body.pusher.name,
+            pusherEmail = req.body.pusher.email;
         console.log(pusherName + pusherEmail);
-        return true;
+        if (pusherName === 'hank1732' && pusherEmail === 'dhuhank@foxmail.com'){
+            return true;
+        }else{
+            return false;
+        }
     }
 });
 
