@@ -1,0 +1,36 @@
+body{
+    background:#000;
+}
+.main-wrapper{
+    width:760px;
+    margin: 120px auto;
+}
+img.potrait{
+    float:left;
+    width:350px;
+}
+.introduction{
+    float:left;
+    margin-left: 80px;
+    color:#fff;
+}
+.info{
+    margin-top: 50px;
+}
+.info li{
+    margin-bottom: 50px;
+}
+.links{
+    padding:0;
+    font-size: 30px;
+}
+.links li{
+    float:left;
+    padding:10px;
+    cursor:pointer;
+    color: #fff;
+    margin-right: 10px;
+}
+.links i:hover{
+    color:#0cf;
+}
