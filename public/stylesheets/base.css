@@ -8,7 +8,7 @@ ul{
 }
 a:link,a:active,a:visited{
     text-decoration:none;
-    color:#000;
+    color:#fff;
 }
 .clearfix:after {
     visibility: hidden;
@@ -22,14 +22,16 @@ h1{
     margin: 10px 0;
 }
 
-.main-header{
+#main-header{
     border-bottom: solid 1px;
     padding: 5px;
+    background:#000;
 }
-.main-header img{
+#main-header img{
     width: 22px;
     vertical-align:text-bottom;
 }
 .version{
-    float:right
+    float:right;
+    color:#888;
 }

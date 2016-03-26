@@ -17,9 +17,7 @@ body:after{
     opacity: 0.8;
     z-index:-1;
 }
-a:link,a:active,a:visited{
-    color:#fff;
-}
+
 
 .global-container{
 	width:900px;

@@ -9,13 +9,6 @@
 </head>
 
 <body>
-    <header class="main-header">
-        <a href="http://hankonline.cn">
-            <img src="img/fav.png">
-            <span>Hankonline</span> 
-        </a>
-        <span class="version"></span>
-    </header>
     <section class="main-wrapper">
         <section>
             <h1>Request Header Infomation</h1>
@@ -47,6 +40,7 @@
     </section>
 </body>
 <script src="javascripts/jquery.min.js"></script>
+<script src="javascripts/header.js"></script>
 <script type="text/javascript">
     var tbody = $('#tbody');
     var pageInput = $('.js-page');
@@ -81,13 +75,5 @@
     $('.js-limit').change(function(event) {
         getData(pageInput.val(), limitInput.val())
     });
-
-    (function getVersion () {
-        $.ajax({
-            url:'/version'
-        }).success(function (data) {
-            $('.version').html(data);
-        });
-    })();
 </script>
 </html>
