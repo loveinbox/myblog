@@ -1,4 +1,4 @@
-(function getVersion () {
+;(function getVersion () {
     $("<header>").attr('id', 'main-header')
         .load( "pages/header.html", function () {
             $.ajax({
