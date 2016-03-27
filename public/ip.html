@@ -48,7 +48,6 @@
         if(page === ''){
             page = 0;
         }
-        console.log('get');
         $.ajax({
             url:'/ipData?page=' + page + '&limit='+ limit,
             contentType: "application/json; charset=UTF-8"
