@@ -10,6 +10,9 @@ a:link,a:active,a:visited{
     text-decoration:none;
     color:#fff;
 }
+a:hover{
+    color:#0cf;
+}
 .clearfix:after {
     visibility: hidden;
     display: block;
@@ -35,3 +38,18 @@ h1{
     float:right;
     color:#888;
 }
+.header-nav{
+    position:absolute;
+    top:15px;
+    right:0;
+    background:#111;
+}
+.header-nav li{
+    float:left;
+    margin-right: 10px;
+}
+
+
+
+
+
