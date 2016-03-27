@@ -38,17 +38,25 @@ h1{
     float:right;
     color:#888;
 }
-.header-nav{
+.header-ul{
     position:absolute;
     top:15px;
     right:0;
     background:#111;
 }
-.header-nav li{
+.header-ul li{
     float:left;
     margin-right: 10px;
 }
-
+.header-slide{
+    position:absolute;
+    right: 314px;
+    top: 31px;
+    border-top:solid 11px #000;
+    border-right:solid 25px #000;
+    border-left:solid 25px transparent;
+    border-bottom:solid 11px transparent;
+}
 
 
 
