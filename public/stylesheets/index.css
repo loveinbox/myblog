@@ -18,7 +18,9 @@ body:after{
     z-index:-1;
 }
 
-
+.header-nav{
+    display:none;
+}
 .global-container{
 	width:900px;
 	margin:0 auto;
