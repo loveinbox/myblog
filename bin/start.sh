@@ -1,0 +1,1 @@
+supervisor -w app.js,public -e 'html|css|js' -- app.js 80 | tee screen.log
