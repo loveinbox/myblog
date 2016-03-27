@@ -52,8 +52,8 @@ h1{
     position:absolute;
     right: 314px;
     top: 31px;
-    border-top:solid 11px #000;
-    border-right:solid 25px #000;
+    border-top:solid 11px #111;
+    border-right:solid 25px #111;
     border-left:solid 25px transparent;
     border-bottom:solid 11px transparent;
 }
