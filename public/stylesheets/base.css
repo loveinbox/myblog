@@ -5,6 +5,8 @@ html,body{
 }
 ul{
     list-style:none;
+    margin:0;
+    padding:0;
 }
 a:link,a:active,a:visited{
     text-decoration:none;
@@ -42,6 +44,8 @@ h1{
     position:absolute;
     top:15px;
     right:0;
+    margin-top: 16px;
+    padding-left:40px;
     background:#111;
 }
 .header-ul li{

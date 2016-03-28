@@ -28,3 +28,27 @@ tbody tr:nth-child(odd){
 .table-limit{
     margin:20px 10px;
 }
+.page-select {
+    float:left;
+    margin-right:20px;
+}
+.page-select li{
+    float:left;
+    cursor:pointer;
+}
+.page-select li::selection{
+    background: transparent;
+}
+.page-number-list li, .pre, .next{
+    width: 25px;
+    text-align: center;
+    border: solid 1px;
+    margin-right: 6px;
+}
+.page-number-list li:hover, .pre:hover, .next:hover, .page-number-list li.active{
+    color:#fff;
+    background:#000;
+}
+.pre, .next{
+    width: 35px;
+}

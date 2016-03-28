@@ -110,6 +110,22 @@ app.get('/ipData', function(req, res, next) {
     db.close();
 });
 
+app.get('/ipDataCount', function(req, res, next) {
+    var sqlite3 = require('sqlite3').verbose();
+    var db = new sqlite3.Database(__dirname + '/public/' + 'mydb.db');
+    try {
+        db.serialize(function() {
+            db.each("SELECT count(*) as count FROM request_headers", function(err, row) {
+                res.send(util.inspect(row.count));
+            });
+        });
+    }
+    catch (err){
+        console.log('db select count err, the err is  ' + err);
+    }
+    db.close();
+});
+
 app.all('/gitpull', function(req, res, next) {
     if (!isValidate(req)){
         res.send('bad post');

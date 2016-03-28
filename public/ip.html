@@ -13,13 +13,26 @@
         <section>
             <h1>Request Header Infomation</h1>
         </section>
-        <section class="table-limit">   
-            <input class="js-page" type="text" placeholder="input ID to go">
+        <section class="table-limit">
+            <ul class="page-select">
+                <li class="pre">
+                    Pre
+                </li>
+                <li class="current">
+                    <ul class="page-number-list">
+                        
+                    </ul>
+                </li>
+                <li class="next">
+                    Next
+                </li>
+            </ul>
+            <input class="js-page" type="text" placeholder="input Page to go">
             <button class="js-go" >GO</button>
             <select class="js-limit">
-                <option>5</option>
                 <option>10</option>
                 <option>20</option>
+                <option>30</option>
             </select>
         </section>
         <section>
@@ -40,38 +53,5 @@
 </body>
 <script src="javascripts/jquery.min.js"></script>
 <script src="javascripts/header.js"></script>
-<script type="text/javascript">
-    var tbody = $('#tbody');
-    var pageInput = $('.js-page');
-    var limitInput = $('.js-limit');
-    function getData (page, limit) {
-        if(page === ''){
-            page = 0;
-        }
-        $.ajax({
-            url:'/ipData?page=' + page + '&limit='+ limit,
-            contentType: "application/json; charset=UTF-8"
-        }).done(function (data) {
-            tbody.empty();
-            var rows = JSON.parse(data).rows;
-            $.each(rows, function (index, value) {
-                var tr = $('<tr>');
-                $('<td>').html(value['id']).appendTo(tr);
-                $('<td>').html(value['time']).slice(-13).appendTo(tr);
-                $('<td>').html('IP: ' + value['ip'] + '<br>' + 'RA: ' + value['remoteAddress']).appendTo(tr);
-                $('<td>').html(value['host']).appendTo(tr);
-                $('<td>').html(value['headers']).appendTo(tr);
-                tr.prependTo(tbody);
-            });
-        });
-    }
-    $(getData(0, 10));
-
-    $('.js-go').click(function(event) {
-        getData(pageInput.val(), limitInput.val());
-    });
-    $('.js-limit').change(function(event) {
-        getData(pageInput.val(), limitInput.val())
-    });
-</script>
+<script src="javascripts/ip.js"></script>
 </html>
