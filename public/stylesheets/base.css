@@ -2,6 +2,7 @@ html,body{
     height: 100%;
     padding: 0;
     margin: 0;
+    overflow: auto;
 }
 ul{
     list-style:none;
@@ -27,10 +28,17 @@ h1{
     margin: 10px 0;
 }
 
+.main-wrapper{
+    margin-top:35px;
+}
 #main-header{
+    position: fixed;
+    top:0;
+    width: 99%;
+    min-width:900px;
     border-bottom: solid 1px;
     padding: 5px;
-    background:#000;
+    background: #000;
 }
 #main-header img{
     width: 22px;
