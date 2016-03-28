@@ -74,6 +74,7 @@ function getPageData (page, limit) {
     if(page === ''){
         page = 0;
     }
+    $('#tbody').empty().html('Loading');
     $.ajax({
         url:'/ipData?page=' + (page - 1) + '&limit='+ limit,
         contentType: "application/json; charset=UTF-8"
