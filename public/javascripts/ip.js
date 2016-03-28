@@ -63,7 +63,7 @@ $(function buildPageList () {
             }
             pageNumber++;
         } 
-        $('.page-number-list li:not[.ellipse]').click(function(event) {
+        $('.page-number-list li:not(.ellipse)').click(function(event) {
             currentPageNumber = $(this).html();
             buildList();
         });
