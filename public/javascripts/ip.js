@@ -19,10 +19,6 @@ $(function buildPageList () {
         $('.js-limit').change(function(event) {
             buildList(listLength, currentPageNumber);
         });
-        $('.page-number-list li').click(function(event) {
-            currentPageNumber = $(this).html();
-            buildList(listLength, currentPageNumber);
-        });
         $('.pre').click(function(event) {
             if(currentPageNumber > 1){
                 currentPageNumber--;
@@ -59,7 +55,11 @@ $(function buildPageList () {
                 }
             }
             pageNumber++;
-        }
+        } 
+        $('.page-number-list li').click(function(event) {
+            currentPageNumber = $(this).html();
+            buildList(listLength, currentPageNumber);
+        });
     }
 });
 
