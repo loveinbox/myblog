@@ -1,11 +1,11 @@
 var step = $('.js-limit').val();
 var list = $('.page-number-list');
+var currentPageNumber = 1;
 
 $(function buildPageList () {
     $.ajax({
         url:'/ipDataCount'
     }).success(function (data) {
-        var currentPageNumber = 1;
         var listLength = Math.ceil(data/step);
         buildList(listLength, currentPageNumber);
         getPageData(currentPageNumber, step);
