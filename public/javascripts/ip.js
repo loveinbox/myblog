@@ -1,38 +1,40 @@
 var step = $('.js-limit').val();
 var list = $('.page-number-list');
+var listLength = 1;
 var currentPageNumber = 1;
 
 $(function buildPageList () {
     $.ajax({
         url:'/ipDataCount'
     }).success(function (data) {
-        var listLength = Math.ceil(data/step);
-        buildList(listLength, currentPageNumber);
+        listLength = Math.ceil(data/step);
+        buildList();
         getPageData(currentPageNumber, step);
 
         $('.js-go').click(function(event) {
             var pageInputValue = $('.js-page').val();
+            currentPageNumber = pageInputValue;
             if(pageInputValue > 0 && pageInputValue < listLength){
-                buildList(listLength, pageInputValue);
+                buildList();
             }            
         });
         $('.js-limit').change(function(event) {
-            buildList(listLength, currentPageNumber);
+            buildList();
         });
         $('.pre').click(function(event) {
             if(currentPageNumber > 1){
                 currentPageNumber--;
             }
-            buildList(listLength, currentPageNumber);
+            buildList();
         });
         $('.next').click(function(event) {
             if(currentPageNumber < listLength){
                 currentPageNumber++;
             }
-            buildList(listLength, currentPageNumber);
+            buildList();
         });
     });
-    function buildList (listLength, currentPageNumber) {
+    function buildList () {
         step = $('.js-limit').val();
         var recordStart = (currentPageNumber - 1) * step;
         getPageData(recordStart, step);
@@ -58,7 +60,7 @@ $(function buildPageList () {
         } 
         $('.page-number-list li').click(function(event) {
             currentPageNumber = $(this).html();
-            buildList(listLength, currentPageNumber);
+            buildList();
         });
     }
 });
