@@ -8,7 +8,7 @@ $(function buildPageList () {
         var currentPageNumber = 1;
         var listLength = Math.ceil(data/step);
         buildList(listLength, currentPageNumber);
-        getPageData(currentPageNumber, currentPageNumber + step);
+        getPageData(currentPageNumber, step);
 
         $('.js-go').click(function(event) {
             var pageInputValue = $('.js-page').val();
@@ -39,7 +39,7 @@ $(function buildPageList () {
     function buildList (listLength, currentPageNumber) {
         step = $('.js-limit').val();
         var recordStart = (currentPageNumber - 1) * step;
-        getPageData(recordStart, recordStart + step);
+        getPageData(recordStart, step);
 
         list.empty();
         for (var i = 0, pageNumber = 1; i < listLength; i++) {
