@@ -1,13 +1,15 @@
 var step = $('.js-limit').val();
 var list = $('.page-number-list');
 var listLength = 1;
+var recordCount = 1;
 var currentPageNumber = 1;
 
 $(function buildPageList () {
     $.ajax({
         url:'/ipDataCount'
     }).success(function (data) {
-        listLength = Math.ceil(data/step);
+        recordCount = data;
+        listLength = Math.ceil(recordCount/step);
         buildList();
         getPageData(currentPageNumber, step);
 
@@ -19,6 +21,8 @@ $(function buildPageList () {
             }            
         });
         $('.js-limit').change(function(event) {
+            currentPageNumber = 1;
+            listLength = Math.ceil(recordCount/step);
             buildList();
         });
         $('.pre').click(function(event) {
