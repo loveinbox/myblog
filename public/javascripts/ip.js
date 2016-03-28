@@ -40,6 +40,7 @@ $(function buildPageList () {
     });
     function buildList () {
         step = $('.js-limit').val();
+        listLength = Math.ceil(recordCount/step);
         var recordStart = (currentPageNumber - 1) * step;
         getPageData(recordStart, step);
 
