@@ -3,7 +3,7 @@ body{
 }
 .main-wrapper{
     width:760px;
-    margin: 120px auto;
+    margin: 120px auto 0;
 }
 img.potrait{
     float:left;
