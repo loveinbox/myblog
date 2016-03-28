@@ -74,11 +74,13 @@ function getPageData (page, limit) {
     if(page === ''){
         page = 0;
     }
+    $('thead').hide();
     $('#tbody').empty().html('Loading');
     $.ajax({
         url:'/ipData?page=' + (page - 1) + '&limit='+ limit,
         contentType: "application/json; charset=UTF-8"
     }).success(function (data) {
+        $('thead').show();
         $('#tbody').empty();
         var rows = JSON.parse(data).rows;
         $.each(rows, function (index, value) {
