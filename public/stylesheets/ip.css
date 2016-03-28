@@ -49,6 +49,11 @@ tbody tr:nth-child(odd){
     color:#fff;
     background:#000;
 }
+.page-number-list li.ellipse:hover{
+    color:#000;
+    background:#fff;
+    cursor: default;
+}
 .pre, .next{
     width: 35px;
 }

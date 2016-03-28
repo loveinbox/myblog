@@ -56,14 +56,14 @@ $(function buildPageList () {
                         $('<li>').html(pageNumber).appendTo(list);
                     }else{
                         if(i === listLength - 3 || i === currentPageNumber - 2){
-                            $('<li>').html('...').appendTo(list);
+                            $('<li>').addClass('ellipse').html('...').appendTo(list);
                         }
                     }                    
                 }
             }
             pageNumber++;
         } 
-        $('.page-number-list li').click(function(event) {
+        $('.page-number-list li:not[.ellipse]').click(function(event) {
             currentPageNumber = $(this).html();
             buildList();
         });
