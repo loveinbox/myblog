@@ -37,6 +37,7 @@ body{
     width: 20%;
 	height: 180px;
 	border-radius:20px;
+    background:#F7F5CE;
 	text-align:center;
 	cursor:pointer;
 	font-size:36px;
@@ -52,21 +53,17 @@ body{
 	font-weight:bold;
     overflow: hidden;
 }
-.font-wrapper:hover{    
-    transition: all .5s ease;
-}
 .font-wrapper{
     position: absolute;
     top:0;
-    font-size: 52px;
     padding: 78px 64px 38px;
+    font-size: 52px;
+    color: #0cf;
 }
-.tech{
-	background: #BEEEA9;
+.font-wrapper:hover{    
+    transition: all .5s ease;
 }
-.tech .font-wrapper{
-	color: #3FA1FF;
-}
+
 .tech .font-wrapper:hover{
     animation:rotating;
     animation-duration: 5s;
@@ -84,29 +81,12 @@ body{
     87.5% {transform-origin: 50% 111px ;transform:rotate(315deg);}
     100% {transform-origin: 50% 111px ;transform:rotate(360deg);}
 }
-.life{
-	background:#F7F5CE;
-}
-.life .font-wrapper{
-	color: #3FA1FF;
-}
 .life .font-wrapper:hover{
     transform:scale(1.2);
-}
-
-.me{
-	background:#ADD3E1;
-}
-.me .font-wrapper{
-    color: #0cf;
 }
 .me .font-wrapper:hover{
 	transform: rotate(45deg);
     transform-origin: 50% 70%;
-}
-@keyframes color-changing {
-    from {color: #0cf;}
-    to {color: #e10;}
 }
 .links{
 	width: 450px;
