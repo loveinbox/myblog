@@ -5,6 +5,7 @@ body{
 body:after{
     content: '';
     display: block;
+    min-width:900px;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -43,12 +44,13 @@ body:after{
 }
 .nav{
 	width:900px;
+    padding: 0 50px;
 	margin:0 auto;
 }
 .nav li{
 	float:left;
-	margin-right: 45px;
-    width: 18%;
+    margin-right: 13%;
+    width: 20%;
 	height: 180px;
 	border-radius:20px;
 	text-align:center;
@@ -59,7 +61,7 @@ body:after{
 .nav li a{
     position:relative;
 	display:block;
-    padding-top: 5px;
+    padding-top: 10px;
 	height:100%;
 	width: 100%;
 	color:#AE7BB3;
@@ -73,7 +75,7 @@ body:after{
     position: absolute;
     top:0;
     font-size: 52px;
-    padding: 78px 55px 38px;
+    padding: 78px 64px 38px;
 }
 .tech{
 	background: #BEEEA9;
@@ -82,13 +84,21 @@ body:after{
 	color: #3FA1FF;
 }
 .tech .font-wrapper:hover{
-	animation:back-forth;
-	animation-duration:1.5s;
-	animation-iteration-count: infinite;
+    animation:rotating;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
 }
-@keyframes back-forth {
-    0% {left: 0px;top:0px;}
-    100% {left: 50px;top:-20px;}
+@keyframes rotating {
+    0% {transform-origin: 50% 111px ;transform:rotate(0);}
+    12.5% {transform-origin: 50% 111px ;transform:rotate(45deg);}
+    25% {transform-origin: 50% 111px ;transform:rotate(90deg);}
+    37.5% {transform-origin: 50% 111px ;transform:rotate(135deg);}
+    50% {transform-origin: 50% 111px ;transform:rotate(180deg);}
+    62.5% {transform-origin: 50% 111px ;transform:rotate(225deg);}
+    75% {transform-origin: 50% 111px ;transform:rotate(270deg);}
+    87.5% {transform-origin: 50% 111px ;transform:rotate(315deg);}
+    100% {transform-origin: 50% 111px ;transform:rotate(360deg);}
 }
 .life{
 	background:#F7F5CE;
@@ -97,15 +107,10 @@ body:after{
 	color: #3FA1FF;
 }
 .life .font-wrapper:hover{
-	animation:rotating;
-	animation-duration: 1.5s;
-	animation-iteration-count: infinite;
+    transform:scale(1.5);
 }
-@keyframes rotating {
-    from {transform:rotate(0);}
-    to {transform:rotate(360deg);}
-}
-.stats{
+
+/* .stats{
 	background:#F7A6B5;
 }
 .stats .font-wrapper{
@@ -113,23 +118,24 @@ body:after{
 }
 .stats .font-wrapper:hover{
 	transform:scale(1.5);
-}
+} */
 .me{
 	background:#ADD3E1;
 }
 .me .font-wrapper{
-	animation:color-changing;
+    color: #0cf;
+/* 	animation:color-changing;
 	animation-duration: 3s;
 	animation-iteration-count: infinite;
-	animation-direction: alternate;
+	animation-direction: alternate; */
 }
 .me .font-wrapper:hover{
 	transform: rotate(45deg);
     transform-origin: 50% 70%;
 }
 @keyframes color-changing {
-    from {color: #FF3F3F;}
-    to {color: #FFF83F;}
+    from {color: #0cf;}
+    to {color: #e10;}
 }
 .links{
 	width: 410px;
