@@ -63,6 +63,7 @@ body{
     padding: 78px 64px 38px;
     font-size: 52px;
     color: #0cf;
+    transition: all .5s ease;
 }
 .font-wrapper:hover{    
     transition: all .5s ease;
