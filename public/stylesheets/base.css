@@ -1,5 +1,4 @@
 html,body{
-    height: 100%;
     padding: 0;
     margin: 0;
     overflow: auto;
@@ -35,10 +34,10 @@ h1{
     position: fixed;
     top:0;
     width: 99%;
+    height:52px;
     min-width:900px;
-    border-bottom: solid 1px;
-    padding: 5px;
-    background: #000;
+    overflow:hidden;
+    transition:all 0.5s;
 }
 #main-header img{
     width: 22px;
@@ -48,9 +47,14 @@ h1{
     float:right;
     color:#888;
 }
+.header-wrapper{
+    padding: 5px;
+    background:#000;
+    overflow:hidden;
+}
 .header-ul{
     position: absolute;
-    top: 15px;
+    top: 14px;
     right: 0;
     margin-top: 16px;
     padding:0 25px;
@@ -63,7 +67,7 @@ h1{
 .header-slide{
     position:absolute;
     right: 202px;
-    top: 31px;
+    top: 30px;
     border-top:solid 11px #111;
     border-right:solid 25px #111;
     border-left:solid 25px transparent;
